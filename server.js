@@ -46,7 +46,7 @@ app.get("/api/suggest", (req, res) => {
   if (!q) return res.json([]);
   const results = faq
     .filter((item) => normalizeText(item.question).includes(q))
-    .slice(0, 5)
+    
     .map((item) => item.question);
   res.json(results);
 });
@@ -84,7 +84,7 @@ app.post("/api/ask", (req, res) => {
         ),
       }))
       .sort((a, b) => b.score - a.score)
-      .slice(0, 5)
+      
       .map((r) => r.question);
     res.json({ answer: null, suggestions });
   }
